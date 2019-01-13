@@ -1751,6 +1751,10 @@ oddTables.treasureTypeI = function () {
 	return result;
 };
 
+oddTables.treasureTypeNil = function () {
+	return ""; //placeholder for encounters with no treasure
+}
+
 //treasure table II
 oddTables.treasureLevel1 = function () {
 	var result;
