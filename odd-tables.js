@@ -1753,7 +1753,7 @@ oddTables.treasureTypeI = function () {
 
 oddTables.treasureTypeNil = function () {
 	return ""; //placeholder for encounters with no treasure
-}
+};
 
 //treasure table II
 oddTables.treasureLevel1 = function () {

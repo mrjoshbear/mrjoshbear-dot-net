@@ -43,7 +43,7 @@ function Monster (name, plural, alignment, armorClass, move, auxMove, hitDice, h
 	this.damageMod = damageMod;
 	this.lairChance = lairChance;
 	this.treasureType = treasureType;
-};
+}
 
 Monster.prototype.shortDesc = function (number) {
 	var statline;
@@ -221,12 +221,12 @@ oddMonsters.giantBeetle = new Monster("giant beetle", "giant beetles", "N", 3, 9
 oddMonsters.giantScorpion = new Monster("giant scorpion", "giant scorpions", "N", 3, 9, 0, 3, 1, 1, 0, 0, oddTables.treasureTypeNil);
 oddMonsters.whiteApe = new Monster("white ape", "white ape", "N", 6, 12, 0, 6, 0, 1, 2, 10, oddTables.treasureTypeC);
 
-oddMonsters.vermin = new Monster("vermin", "vermin", "N", 8, 3, 0, 0, 1, 0, 1, 0, treasureTypeNil);
-oddMonsters.bat = new Monster("bat", "bats", "N", 9, 3, 18, 0, 0, 1, 0, 1, 0, treasureTypeNil);
-oddMonsters.wolf = new Monster("wolf", "wolves", "N", 8, 15, 0, 1, 0, 1, 0, 0, treasureTypeNil);
-oddMonsters.boar = new Monster("boar", "boars", "N", 8, 12, 0, 1, 1, 1, 0, 0, treasureTypeNil);
-oddMonsters.panther = new Monster("panther", "panthers", "N", 8, 12, 0, 2, 0, 1, 0, 0, treasureTypeNil);
-oddMonsters.bear = new Monster("bear", "bears", "N", 8, 12, 0, 3, 0, 1, 1, 0, treasureTypeNil);
+oddMonsters.vermin = new Monster("vermin", "vermin", "N", 8, 3, 0, 0, 1, 0, 1, 0, oddTables.treasureTypeNil);
+oddMonsters.bat = new Monster("bat", "bats", "N", 9, 3, 18, 0, 0, 1, 0, 1, 0, oddTables.treasureTypeNil);
+oddMonsters.wolf = new Monster("wolf", "wolves", "N", 8, 15, 0, 1, 0, 1, 0, 0, oddTables.treasureTypeNil);
+oddMonsters.boar = new Monster("boar", "boars", "N", 8, 12, 0, 1, 1, 1, 0, 0, oddTables.treasureTypeNil);
+oddMonsters.panther = new Monster("panther", "panthers", "N", 8, 12, 0, 2, 0, 1, 0, 0, oddTables.treasureTypeNil);
+oddMonsters.bear = new Monster("bear", "bears", "N", 8, 12, 0, 3, 0, 1, 1, 0, oddTables.treasureTypeNil);
 
 //giant crabs
 //giant octopi
@@ -278,7 +278,7 @@ var oddEncounters = {
 
 //Villages are for the random villages attracted to PC castles after they are established
 oddEncounters.village = function () {
-	var result, i,
+	var result,
 		noun, name,
 		numberEncountered, fyrd, population, taxes,
 		archers, foot;
