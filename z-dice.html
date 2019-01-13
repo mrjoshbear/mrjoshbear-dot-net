@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Funny Dice</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      textarea {
+        font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs=6">
+          <button class="btn btn-default btn-xs" onclick="output('d2: ' + dice.d2());">d2</button>
+          <button class="btn btn-default btn-xs" onclick="output('d3: ' + dice.d3());">d3</button>
+          <button class="btn btn-default btn-xs" onclick="output('d4: ' + dice.d4());">d4</button>
+          <button class="btn btn-default btn-xs" onclick="output('d5: ' + dice.d5());">d5</button>
+          <button class="btn btn-default btn-xs" onclick="output('d6: ' + dice.d6());">d6</button>
+          <button class="btn btn-default btn-xs" onclick="output('d7: ' + dice.d7());">d7</button>
+          <button class="btn btn-default btn-xs" onclick="output('d8: ' + dice.d8());">d8</button>
+          <button class="btn btn-default btn-xs" onclick="output('d10 ' + dice.d10());">d10</button>
+          <button class="btn btn-default btn-xs" onclick="output('d12: ' + dice.d12());">d12</button>
+          <button class="btn btn-default btn-xs" onclick="output('d14: ' + dice.d14());">d14</button>
+          <button class="btn btn-default btn-xs" onclick="output('d16: ' + dice.d16());">d16</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20: ' + dice.d20());">d20</button>
+          <button class="btn btn-default btn-xs" onclick="output('d24: ' + dice.d24());">d24</button>
+          <button class="btn btn-default btn-xs" onclick="output('d30: ' + dice.d30());">d30</button>
+          <button class="btn btn-default btn-xs" onclick="output('d100: ' + dice.d100());">d100</button>
+          <hr/>
+          <button class="btn btn-default btn-xs" onclick="output('2d6: ' + dice.d6(2));">2d6</button>
+          <button class="btn btn-default btn-xs" onclick="output('3d6: ' + dice.d6(3));">3d6</button>
+          <button class="btn btn-default btn-xs" onclick="output('4d6: ' + dice.d6(4));">4d6</button>
+          <button class="btn btn-default btn-xs" onclick="output('5d6: ' + dice.d6(5));">5d6</button>
+          <hr/>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d2: ' + (dice.d20() + dice.d2()));">d20+d2</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d3: ' + (dice.d20() + dice.d3()));">d20+d3</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d4: ' + (dice.d20() + dice.d4()));">d20+d4</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d5: ' + (dice.d20() + dice.d5()));">d20+d5</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d6: ' + (dice.d20() + dice.d6()));">d20+d6</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d7: ' + (dice.d20() + dice.d7()));">d20+d7</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d8: ' + (dice.d20() + dice.d8()));">d20+d8</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d10: ' + (dice.d20() + dice.d10()));">d20+d10</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d12: ' + (dice.d20() + dice.d12()));">d20+d12</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d14: ' + (dice.d20() + dice.d14()));">d20+d14</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d16: ' + (dice.d20() + dice.d16()));">d20+d16</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d20: ' + (dice.d20() + dice.d20()));">d20+d20</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d24: ' + (dice.d20() + dice.d24()));">d20+d24</button>
+          <button class="btn btn-default btn-xs" onclick="output('d20+d30: ' + (dice.d20() + dice.d30()));">d20+d30</button>
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-6">
+          <!--<div id="output-log"></div> -->
+          <textarea id="output-log" class="full-text-area" rows="20" cols="80"></textarea>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="dice.js"></script>
+    <script src="odd-tables.js"></script>
+    <script type="text/javascript">
+      function output(stuff) {
+        jQuery("#output-log").text(stuff + "\n" + jQuery("#output-log").text());
+      }
+    </script>
+  </body>
+</html>

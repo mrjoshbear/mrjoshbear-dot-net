@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Terra Borea Referee Tools</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      textarea {
+        font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+      }
+      .buttonLabel {
+        margin:2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs=6">
+          <p class="buttonLabel">Dice</p>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d2());">d2</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d3());">d3</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d4());">d4</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d6());">d6</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d8());">d8</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d10());">d10</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d12());">d12</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d20());">d20</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d100());">d100</button>
+          <br>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d6(2));">2d6</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d6(3));">3d6</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d6(4));">4d6</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.d6(5));">5d6</button>
+          <br>
+          <button class="btn btn-default btn-xs" onclick="output(dice.multiple(10, 1, 6));">10 x d6</button>
+          <button class="btn btn-default btn-xs" onclick="output(dice.multiple(10, 1, 20));">10 x d20</button>
+          <p class="buttonLabel">Basic Tables</p>
+          <button class="btn btn-default btn-xs" onclick="output(boreaTables.character());">character</button>
+          <button class="btn btn-default btn-xs" onclick="output(boreaTables.reaction());">reaction</button>
+
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-6">
+          <!--<div id="output-log"></div> -->
+          <textarea id="output-log" class="full-text-area" rows="20" cols="80"></textarea>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="dice.js"></script>
+    <script src="borea-tables.js"></script>
+    <script type="text/javascript">
+      function output(stuff) {
+        jQuery("#output-log").text(stuff + "\n" + jQuery("#output-log").text());
+      }
+    </script>
+  </body>
+</html>

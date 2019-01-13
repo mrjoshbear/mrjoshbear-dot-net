@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Odd Referee Tools</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      textarea {
+        font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+      }
+      .buttonLabel {
+        margin:2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs=6">
+          <p class="buttonLabel" href="#dice-buttons">Dice</p>
+          <button type="button" class="btn btn-default btn-xs" onclick="updateLocation('home');">go home</button>
+          <button type="button" class="btn btn-default btn-xs" onclick="updateLocation('out');">go out</button>
+
+        </div>
+        <div class="col-lg-10 col-md-9 col-sm-8 col-xs-6">
+          <div>
+            <b>Location: </b><span id="location"></span>
+          </div>
+          <div id="output-log"></div>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/dice.js"></script>
+    <script src="/names/masculine-census-names.js"></script>
+    <script src="/names/feminine-census-names.js"></script>
+    <script src="/names/epithets.js"></script>
+    <script src="/names/conflux2.js"></script>
+    <script src="/names/oddNames.js"></script>
+    <script src="/odd-tables.js"></script>
+    <script src="/odd-mobs.js"></script>
+    <script type="text/javascript">
+      function updateLocation(location) {
+        jQuery("#location").text(location);
+        output("you go "+location);
+      }
+      function output(stuff) {
+        jQuery("#output-log").text(stuff + "\n" + jQuery("#output-log").text());
+      }
+    </script>
+  </body>
+</html>
