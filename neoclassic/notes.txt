@@ -1,0 +1,90 @@
+
+equipment
+	Travois
+
+first aid
+	wash - clean water, vinegar, honey, alcohol, infusions
+	bind - bandages, sewing, splints
+	pain - drugs
+	sleep - drugs, warmth, comfort
+
+
+mobs
+	intelligence
+		inert, reactive, animal, low, human, high, genius, super
+
+energy types
+	fire/heat, ice/cold, lightning/electric, acid/caustic, poison/toxic
+
+special abilities
+	aura
+		fire, frost, electric, miasmal, whirlwind, anti-magic
+	gaze
+		petrifying, stunning, charming, evil eye (ill-luck)
+	speach
+		charm, suggestion, confusion (babble), madness, curses, mimic, ventriloquist 
+	immunity/vulnerabililty
+	Chameleon (as elven cloak)
+	poisonous blood
+	blinking
+	tail spines/feather darts
+	frog tongue/grab
+	movement
+		swimming, flying, burrowing, spider-climb/gecko
+
+
+dragons
+http://oldguardgamingaccoutrements.blogspot.com/2009/10/unexpurgated-dragon-generator.html 
+
+General Form.
+roll 1d20
+1. Serpentine, no limbs.
+2. Serpentine, winged
+3. Serpentine, forelimbs only.
+4. Serpentine, forelimbs and wings.
+5. Serpentine, four legs only.
+6. Serpentine, four legs and wings.
+7. Serpentine, bipedal rear legs only.
+8. Serpentine, bipedal rear legs and wings.
+9. Serpentine, bipedal rear legs and fore arms.
+10. Serpentine, bipedal rear legs, fore arms, and wings
+11. Traditional heavy bodied dragon with four limbs and wings.
+12. Bipedal, carnosaur-like.
+13. Bipedal, carnosaur-like with wings.
+14. Traditional heavy bodied dragon, four limbs only.
+15. Multi-legged, six limbs or more.
+16. Multi-legged, six limbs or more and winged
+17. Multi-legged, one hundred limbs or more.
+18. The dragon’s form changes after each encounter. Re-roll for beginning form.
+19. The dragon lacks limbs. paws, claws, or hands attach directly to the body.
+20. Head and body as one, no neck. Bipedal, long tail, no fore arms or wings.
+
+Purpose or Obsession.
+The thing which drives the dragons actions.
+roll 1d12
+1. Arcanovore. The dragon devours magic items, spell books, and spell casters.
+2. The dragon lusts to accumulate treasure.
+3. The dragon must eat sentient creatures.
+4. The dragon loves music and collects musicians who must play for it’s enjoyment until they die.
+5. Bibliophile. The dragon hoards knowledge. If it captures books which it cannot itself, read, it will search for persons who can be forced to read to it.
+6. The dragon exists to foul pure wells and water sources.
+7. The dragon collects maidens. It may or may not eat them.
+8. The dragon destroys temples and priests regardless of alignment.
+9. The dragon is obsessed with colorful fish.
+10. The dragon always seeks to expand it’s personal desolation.
+11. The dragon is zealously attempting to found it’s own religion, centered on the worship of itself.
+12. Fighting is the dragon’s raison d’etre. It always seeks to match itself to the greatest possible foes.
+
+Allies or Minions.
+There is only a 25% chance the dragon will have either.
+If so, roll 1d10
+1. A second, lesser dragon of a standard type.
+2. A second, lesser Randomly generated dragon.
+3. A thrall monster. (roll on appropriate random wilderness encounter table.)
+4. A non-dragon mate. The Random Unique Dragon is a Monster and capable of breeding with any other creature.
+5. The dragon functions as the Local Lord. Roll for a group of fighters of the dominate area race.
+6. The dragon is venerated by the locals. It will be defended by it’s Zealots who will sacrifice offenders to their "god".
+7. The Local Lord placates the dragon by regular human sacrifices. He will prevent anyone upsetting the arrangement.
+8. The dragons actions serve the purposes of a minor infernal power. There is a 20% chance that it may send demonic assistance if the dragon is hard pressed.
+9. A famous dragon-slayer opposes any who would attempt to destroy the dragon before him.
+10. The dragon is in-fact, an agent of, or controlled by, a neighboring power of the lands it is despoiling. Destroying it may upset plans the PCs know nothing about, and gain them the attention of powers of which they are unaware.

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- 
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to <http://unlicense.org/> 
+-->
+<html lang="en">
+  <head>
+    <title>Ref Tools</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,500,700" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Ref Tools</h1>
+      </div>
+      <div id="sidebar" class="sidebar box">
+        <button type="button" onclick="outputBuffer.push(dice.d6());">d6</button>
+        <button type="button" onclick="outputBuffer.push(dice.d20());">d20</button>
+        <button type="button" onclick="outputBuffer.push(bob.statblock());">bob</button>
+        <button type="button" onclick="outputBuffer.push(orc.statblock());">orc</button>
+        <!-- <button onclick="count++">+1</button> -->
+      </div>
+      <div class="main box">
+        <div class="output-area" id="output-area">
+
+        </div>
+      </div>
+      <div class="footer">
+        <p class="fineprint">All original content available under the <a href="http://unlicense.org/">Unlicense</a></p>
+      </div>
+    </div>
+<style>
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  background-color: #eee;
+}
+
+pre, kbd, tt {
+  font-family: 'Anonymous Pro', monospace;
+}
+
+title, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+b {
+  font-weight: 500;
+}
+
+li pre {
+  margin: 2px;
+}
+
+.fineprint {
+  font-size: 8pt;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  border-radius: 5px;
+  padding: 0px 10px;
+  background-color: #ddd;
+}
+
+.main {
+  grid-area: main;
+  border-radius: 5px;
+  padding: 0px 10px;
+  background-color: #ddd;
+}
+
+.header {
+  grid-area: header;
+  border-radius: 5px;
+  padding: 0px 10px;
+  background-color: #ddd;
+  /*background-color: #999;*/
+}
+
+.footer {
+  grid-area: footer;
+  border-radius: 5px;
+  padding: 0px 10px;
+  background-color: #ddd;
+  /*background-color: #999;*/
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    /*grid-template-columns: 120px 120px 120px;*/
+    grid-template-areas:
+      "header header header header header"
+      "sidebar main main main main"
+      "footer  footer  footer footer footer";
+    background-color: #eee;
+    /*color: #444;*/
+}
+
+.box {
+  /*background-color: #444;*/
+  /*color: black;*/
+  /*border-radius: 5px;*/
+  /*padding: 10px;*/
+  /*font-size: 150%;*/
+}
+</style>
+<!-- <script src="https://unpkg.com/mithril/mithril.js"></script> -->
+<script src="./mithril.js"></script>
+<script src="../dice.js"></script>
+<script>
+  /* global m */
+class Monster {
+  constructor (name, plural, alignment = 'N', armorClass = 9, move = 12, hitDice = 1, hitMod = 0, damage = 1, damageMod = 0, lairChance = 50, treasureType = 'nil') {
+    this.name = name;
+    this.plural = plural;
+    this.alignment = alignment;
+    this.armorClass = armorClass;
+    this.move = move;
+    this.hitDice = hitDice;
+    this.hitMod = hitMod;
+    this.damage = damage;
+    this.damageMod = damageMod;
+    this.lairChance = lairChance;
+    this.treasureType = treasureType;
+    this.auxMove = 0;
+    this.auxMoveType = null;
+    this.specials = [];
+  }
+
+  hd() {
+    return this.hitDice + ((this.hitMod && this.hitMod !== 0) ? `+${this.hitmod}` : '');
+  }
+
+  dam() {
+    return `${this.damage}d6` + ((this.damageMod && this.damageMod !== 0) ? `+${this.damageMod}` : '');
+  }
+
+  mv() {
+    return this.move + ((this.auxMoveType && this.auxMoveType !== '' && this.auxMove && this.auxMove !== 0) ? ` (${this.auxMoveType} ${this.auxMove})` : '\t');
+  }
+
+  addMove(type, speed) {
+    this.auxMoveType = type;
+    this.auxMove = speed;
+    return this;
+  }
+
+  addSpecial(special) {
+    this.specials.push;
+  }
+
+  statblock() {
+    return new MonsterStatblock(this);
+  }
+}
+
+class MonsterStatblock {
+  constructor (monster) {
+    this.monster = monster;
+  }
+  view() {
+    return m('pre', {class: 'statblock'}, `${this.monster.name}\tAL:${this.monster.alignment}\tHD:${this.monster.hd()}\tAC:${this.monster.armorClass}\tD:${this.monster.dam()}\tMv:${this.monster.mv()}\tLair:${this.monster.lairChance}%\tTT:${this.monster.treasureType}`);
+  }
+}
+
+class Character {
+  constructor (name = '', gender = 'N', alignment = 'N', characterClass = '/', level = 0, race = '?') {
+    this.name = name;
+    this.gender = gender;
+    this.alignment = alignment;
+    this.characterClass = characterClass;
+    this.level = level;
+    this.race = race;
+    this.str = 10;
+    this.dex = 10;
+    this.con = 10;
+    this.int = 10;
+    this.wis = 10;
+    this.cha = 10;
+    this.hp = 3;
+    this.ac = 10;
+  }
+
+  statblock() {
+    return new CharacterStatblock(this);
+  }
+}
+
+class CharacterStatblock {
+  constructor (character) {
+    this.character = character;
+  }
+  view() {
+    return m('pre', {class: 'statblck'}, `${this.character.name}\t${this.character.gender} ${this.character.alignment} ${this.character.characterClass}${this.character.level} S${this.character.str} D${this.character.dex} C${this.character.con} I${this.character.int} W${this.character.wis} X${this.character.cha} HP${this.character.hp} AC${this.character.ac}`);
+  }
+}
+
+/* exported orc, imp, bob */
+const orc = new Monster('orc','orcs','NC',7,9,1,0,1,0,80,'A');
+const imp = new Monster('imp','imps','C',9,6,1,0,1,0,20,'I').addMove('fly',18);
+const bob = new Character('bob');
+
+const outputArea = document.getElementById('output-area');
+// const sidebar = document.getElementById('sidebar');
+
+function rmap(array, fn) {
+    return array.reduceRight(function (result, el) {
+        result.push(fn(el));
+        return result;
+    }, []);
+}
+
+let outputBuffer = {
+  buffer: [],
+  push: (obj) => { 
+    outputBuffer.buffer.push(obj); 
+    m.redraw();
+  },
+  view: () => {
+    return m('div.outputContainer', rmap(outputBuffer.buffer, (item) => {
+      if (item && item.view && typeof item.view === 'function') {
+        return item.view();
+      }
+      return m('div.outputItem', item.toString());
+      // return m('div.outputItem', item.toString());
+    }));
+  }
+};
+
+m.mount(outputArea, outputBuffer);
+// m.mount(outputArea, mobListing);
+</script>
+  </body>
+</html>
