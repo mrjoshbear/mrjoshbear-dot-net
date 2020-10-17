@@ -74,6 +74,15 @@ dice.pool = function (sides, pool, threshold) {
 	return result + successes + " successes";
 };
 
+dice.sr4Pool = function (poolSize) {
+	var i, successes;
+	successes = 0;
+	for (i = 0; i < poolSize; i++) {
+		successes += dice.d6() > 3 ? 1 : 0
+	}
+	return successes;
+};
+
 dice.parse = function (formula, loud) {
 	var pattern, matches, number, sides, mult, multOp, add, addSign, result;
 	pattern = /([1-9]\d*)?[dD]([1-9]\d*)?([/x*÷][1-9]\d*)?([-+]\d+)?/;
